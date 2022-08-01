@@ -81,7 +81,11 @@ def power_on():
         product_cost = current_machine.get_product_cost(selection)
         print(f"The \"{selection}\" product costs ${'{:.2f}'.format(product_cost)}.")
         amount_paid = process_payment(product_cost)
-        current_machine.order(selection)
+        try:
+            current_machine.order(selection)
+        except machine.InadequateIngredientsException as ire:
+            print(str(ire.message))
+            enter_to_continue()
         print(f"Here is your {selection}! Enjoy!")
         return_change(product_cost, amount_paid)
         enter_to_continue()

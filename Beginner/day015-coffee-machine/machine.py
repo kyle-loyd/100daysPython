@@ -24,11 +24,12 @@ class Machine():
 
     def have_enough(self, product, ingredient):
         if product["ingredients"][ingredient] > self.ingredients[ingredient]:
-            raise InadequateResourcesException("Inadequate resources.")
+            raise InadequateIngredientsException("Inadequate ingredients.")
 
     def update_stock(self, product, ingredient):
         self.ingredients[ingredient] -= product["ingredients"][ingredient]  
 
-class InadequateResourcesException(Exception):
+class InadequateIngredientsException(Exception):
     def __init__(self, *args):
         super().__init__(args)
+        self.message = args[0]
