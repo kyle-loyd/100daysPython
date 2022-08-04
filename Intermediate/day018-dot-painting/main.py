@@ -9,8 +9,8 @@ turtle.penup()
 turtle.setposition(-200, -200)
 for row in range(10):
     for column in range(10):
-        turtle.pendown(10, color_list[randint(0,5)])
-        turtle.dot()
+        turtle.pendown()
+        turtle.dot(20, color_list[randint(0,5)])
         turtle.penup()
         if column == 9:
             turtle.left(90)
