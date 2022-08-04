@@ -5,13 +5,11 @@ color_list = ["medium orchid", "dark sea green", "steel blue", "goldenrod", "cri
 
 turtle = Turtle()
 turtle.speed(0)
-turtle.pensize(10)
 turtle.penup()
 turtle.setposition(-200, -200)
 for row in range(10):
     for column in range(10):
-        turtle.pencolor(color_list[randint(0,5)])
-        turtle.pendown()
+        turtle.pendown(10, color_list[randint(0,5)])
         turtle.dot()
         turtle.penup()
         if column == 9:
