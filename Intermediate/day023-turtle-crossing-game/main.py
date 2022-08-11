@@ -16,8 +16,14 @@ player = Player()
 game = Game()
 scoreboard = Scoreboard()
 
-screen.onkeypress(player.move, "w")
-screen.onkeypress(player.move, "Up")
+screen.onkeypress(player.move_forward, "w")
+screen.onkeypress(player.move_forward, "Up")
+screen.onkeypress(player.move_left, "a")
+screen.onkeypress(player.move_left, "Left")
+screen.onkeypress(player.move_right, "d")
+screen.onkeypress(player.move_right, "Right")
+screen.onkeypress(player.move_backward, "s")
+screen.onkeypress(player.move_backward, "Down")
 
 game_is_on = True
 active_vehicles = []
