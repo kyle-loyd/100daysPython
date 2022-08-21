@@ -1,4 +1,3 @@
-import requests
 import mail
 import rest_client
 from datetime import datetime as dt
@@ -18,7 +17,7 @@ def is_nighttime(position):
     data = rest_client.get_sunrise_sunset(position)
     sunrise = int(data["results"]["sunrise"].split("T")[1].split(":")[0])
     sunset = int(data["results"]["sunset"].split("T")[1].split(":")[0])
-    current_hour = dt.now().hour()
+    current_hour = dt.now().hour
     return sunset < current_hour < sunrise
 
 

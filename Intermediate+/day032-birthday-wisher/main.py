@@ -8,7 +8,7 @@ SMTP = "smtp.gmail.com"
 PORT = 465
 FROM = "kyloyd.python@gmail.com"
 TO = "kyloyd.python@yahoo.com"
-PASSWORD = "efvwlkqcfdtxiyoi"
+PASSWORD = "REDACTED"
 
 birthdays = pandas.read_csv('birthdays.csv').to_dict(orient='records')
 now = dt.datetime.now()

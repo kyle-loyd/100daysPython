@@ -1,8 +1,7 @@
 import requests as req
-from datetime import datetime as dt
 
 ISS_API_URL = "http://api.open-notify.org/iss-now.json"
-SUNRISE_SUNSET_API_URL = "https://api.sunrise-sunset.org/json"
+SUNRISE_SUNSET_API_URL = "http://api.sunrise-sunset.org/json"
 
 
 def get(url, params=None):
