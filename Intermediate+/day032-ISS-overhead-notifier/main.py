@@ -1,9 +1,10 @@
 import requests
+import mail
 import rest_client
-from datetime import datetime
+from datetime import datetime as dt
 
-HOME_LAT = 41
-HOME_LNG = -88
+HOME_LAT = 41.118568
+HOME_LNG = -87.859970
 
 
 def iss_is_overhead():
@@ -13,29 +14,14 @@ def iss_is_overhead():
     return latitude_check and longitude_check
 
 
+def is_nighttime(position):
+    data = rest_client.get_sunrise_sunset(position)
+    sunrise = int(data["results"]["sunrise"].split("T")[1].split(":")[0])
+    sunset = int(data["results"]["sunset"].split("T")[1].split(":")[0])
+    current_hour = dt.now().hour()
+    return sunset < current_hour < sunrise
 
 
-if iss_is_overhead():
-    pass
-
-parameters = {
-    "lat": MY_LAT,
-    "lng": MY_LONG,
-    "formatted": 0,
-}
-
-response = requests.get(, params=parameters)
-response.raise_for_status()
-data = response.json()
-sunrise = int(data["results"]["sunrise"].split("T")[1].split(":")[0])
-sunset = int(data["results"]["sunset"].split("T")[1].split(":")[0])
-
-time_now = datetime.now()
-
-#If the ISS is close to my current position
-# and it is currently dark
-# Then send me an email to tell me to look up.
-# BONUS: run the code every 60 seconds.
-
-
-
+if is_nighttime({"latitude": HOME_LAT, "longitude": HOME_LNG}):
+    if iss_is_overhead():
+        mail.send()
