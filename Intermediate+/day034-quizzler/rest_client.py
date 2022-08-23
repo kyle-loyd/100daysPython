@@ -11,6 +11,3 @@ def get(url, params=None):
 
 def get_quiz_questions():
     return get(url=QUIZ_API)["results"]
-    
-
-print(get_quiz_questions())
